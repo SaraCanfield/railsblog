@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Blogredit</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<%= flash[:notice] if flash[:notice] %>
+<%= flash[:alert] if flash[:alert] %>
+
+	<%= link_to "Sign In ", users_sign_in_path %>
+	
+	<%= link_to " Sign Up ", new_user_path %>
+
+<% if session[:user_id] %>
+	<%= link_to " New Post ", new_user_post_path(session[:user_id]) %>
+	<%= link_to " My Posts ", user_posts_path(session[:user_id]) %>
+	<%= link_to " List Posters ", users_path %>
+	<%= link_to " Sign Out ", users_sign_out_path %>
+
+<% end %>
+
+<%= yield %>
+
+</body>
+</html>

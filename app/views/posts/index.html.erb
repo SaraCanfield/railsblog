@@ -1,0 +1,16 @@
+<% @posts.each do |post| %>
+	<p>
+
+
+	<%=link_to post.title, user_post_path(post.user.id, post.id) %>
+	</p>
+	Written by:
+	<% if post.user %>
+		<%= post.user.username %>
+	<% else %>
+		Annon
+	<% end %>
+<% end %>
+
+
+
